@@ -6,7 +6,9 @@ import { GlobalStyle } from './style';
 import { GlobalFont } from './statics/iconfont/iconfont';
 import { BrowserRouter, Route} from 'react-router-dom';
 import Home from './pages/home';
-import Detail from './pages/detail';
+import Detail from './pages/detail/loadable.js';
+import Login from './pages/login';
+import Write from './pages/write';
 
 class App extends Component {
   render() {
@@ -19,7 +21,9 @@ class App extends Component {
             <div>
               <Header />
               <Route path="/" exact component={Home}></Route>
-              <Route path="/detail" exact component={Detail}></Route>
+              <Route path="/login" exact component={Login}></Route>
+              <Route path='/write' exact component={Write}></Route>
+              <Route path="/detail/:id" exact component={Detail}></Route>
             </div>
           </BrowserRouter>
         </div>
