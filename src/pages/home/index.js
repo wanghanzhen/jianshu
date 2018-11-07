@@ -51,7 +51,7 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   changeHomeData() {
-    dispatch(actionCreators.getHomeInfo());
+    dispatch({type: 'USER_FETCH_REQUESTED'});
   },
   changeScrollTopShow() {
     if (document.documentElement.scrollTop > 100) {
