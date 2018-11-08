@@ -1,21 +1,25 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import * as actionTypes from './actionTypes';
+import * as actionCreators from './actionCreators';
 
 import axios from 'axios';
 
-function* fetchUser() {
+function* getHomeInfo() {
   const data = yield axios.get('/api/home.json');
   const result = data.data.data;
-  yield put({
-    type: actionTypes.CHANGE_HOME_DATA,
-    topicList: result.topicList,
-    articleList: result.articleList,
-    recommendList: result.recommendList
-  })
+  yield put(actionCreators.changHomeData(result));
+}
+
+function* getMoreList(page) {
+  const data = yield axios.get('/api/homeList.json?page=' + page);
+  const result = data.data.data;
+  yield put(actionCreators.addHomeList(result, page + 1));
+
 }
 
 function* mySaga() {
-  yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
+  yield takeEvery(actionTypes.HOME_DATA_REQUEST, getHomeInfo);
+  yield takeEvery(actionTypes.MORE_LIST_REQUEST, getMoreList);
 }
 
 export default mySaga;

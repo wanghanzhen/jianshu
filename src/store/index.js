@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 
 import rootSagas from './rootsagas';
-console.log(rootSagas)
 
 const sagaMiddleware = createSagaMiddleware();
 

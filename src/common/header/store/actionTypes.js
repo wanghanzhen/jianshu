@@ -4,6 +4,8 @@ export const SEARCH_BLUR = 'serach_blur';
 
 export const CHANGE_LIST = 'change_list';
 
+export const LIST_REQUEST = 'list_request';
+
 export const MOUSE_ENTER = 'mouse_enter';
 
 export const MOUSE_LEAVE = 'mouse_leave';
